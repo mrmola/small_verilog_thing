@@ -39,9 +39,9 @@ async def test_project(dut):
     await ClockCycles(dut.clk, 1)
     dut.rst_n.value = 1
     dut._log.info(dut.counter.value)
-    assert dut.counter.value = 0
+    assert dut.counter.value == 0
     await ClockCycles(dut.clk, 3)
-    assert dut.counter.value = 0b11111100
+    assert dut.counter.value == 3
     # The following assersion is just an example of how to check the output values.
     # Change it to match the actual expected output of your module:
     # assert dut.uo_out.value == 50

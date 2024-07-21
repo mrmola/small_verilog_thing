@@ -12,6 +12,6 @@ module counter (
 );
 
   always @(posedge clk)
-    currentCount = currentCount + 1;
+    currentCount = rst_n ? 8'b00000000 : currentCount + 1;
   
 endmodule
