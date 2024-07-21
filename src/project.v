@@ -15,16 +15,16 @@ module tt_um_mrmola (
     input  wire       clk,      // clock
     input  wire       rst_n     // reset_n - low to reset
 );
-  wire count[15:0];
+  wire [15:0] count;
 
   counter clock_counter(
-    .currentCount(count[15:0]),
+    .currentCount({count}),
     .clk(clk),
     .rst_n(rst_n)
   );
   
   blinker blink(
-    .currentCount(count[15:0]),
+    .currentCount({count}),
     .clk(clk),
     .blink_wire(uo_out[0])
   );
