@@ -7,7 +7,7 @@
 
 module blinker (
     output wire       blink_wire,   // Dedicated outputs
-    input  wire[7:0]  currentCount, 
+    input  wire[15:0]  currentCount, 
     input  wire       clk      // clock, disable to disable blinking (NO JANK HERE)
 );
     assign blink_wire <= wire[8] & wire[8];
