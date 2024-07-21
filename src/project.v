@@ -17,8 +17,7 @@ module tt_um_mrmola (
 );
   wire _notused[7:0]
   counter test_counter(
-    .currentCount[7:0](uo_out[7:0]),
-    .currentCount[15:8](_notused),
+    .currentCount({uo_out,_notused}),
     .clk(clk),
     .rst_n(rst_n)
   );
