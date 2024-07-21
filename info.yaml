@@ -19,6 +19,7 @@ project:
   source_files:
     - "project.v"
     - "counter.v"
+    - "blinker_module.v"
 
 # The pinout of your project. Leave unused pins blank. DO NOT delete or add any pins.
 pinout:
