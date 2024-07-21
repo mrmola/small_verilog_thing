@@ -16,7 +16,7 @@ module tt_um_mrmola (
     input  wire       rst_n     // reset_n - low to reset
 );
   counter test_counter(
-    .currentCount(uo_out[7:0]),
+    .currentCount(uo_out[7:0], 0'b00000000),
     .clk(clk),
     .rst_n(rst_n)
   );
