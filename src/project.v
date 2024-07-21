@@ -18,13 +18,13 @@ module tt_um_mrmola (
   wire count[15:0];
 
   counter clock_counter(
-    .currentCount(count),
+    .currentCount(count[15:0]),
     .clk(clk),
     .rst_n(rst_n)
   );
   
   blinker blink(
-    .currentCount(count),
+    .currentCount(count[15:0]),
     .clk(clk),
     .blink_wire(uo_out[0])
   );
