@@ -40,7 +40,7 @@ async def test_project(dut):
 
     dut._log.info("Reset")
     dut.rst_n.value = 0
-    await ClockCycles(dut.clk, 1)
+    await ClockCycles(dut.clk, 4)
     dut.rst_n.value = 1
     dut._log.info(dut.counter.value)
     assert dut.counter.value == 0
@@ -49,7 +49,7 @@ async def test_project(dut):
 
     #TEST BLINKER
     #this is terrible but I don't know a better way that won't fail the test if you adjust blinker speed
-    
+
     # The following assersion is just an example of how to check the output values.
     # Change it to match the actual expected output of your module:
     # assert dut.uo_out.value == 50
