@@ -45,7 +45,7 @@ module tb ();
   counter counter_test (
       .currentCount(counter),
       .clk(clk),
-      .rst_n(rest_n)
+      .rst_n(rst_n)
   );
 
 
