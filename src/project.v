@@ -19,7 +19,7 @@ module tt_um_mrmola (
     .currentCount(uo_out),
     .clk(clk),
     .rst_n(rst_n);
-  )
+  );
   // All output pins must be assigned. If not used, assign to 0.
   assign uio_out = 0;
   assign uio_oe  = 0;
