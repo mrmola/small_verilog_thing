@@ -55,7 +55,7 @@ async def test_project(dut):
         await ClockCycles(dut.clk, 1)
         if(dut.blink_wire.value == 0):
             zeros += 1
-        else
+        else:
             ones += 1
 
     assert (abs(zeros-ones) < 1000)
