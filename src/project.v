@@ -15,7 +15,8 @@ module tt_um_mrmola (
     input  wire       clk,      // clock
     input  wire       rst_n     // reset_n - low to reset
 );
-  wire _notused[7:0]
+  wire _notused[7:0];
+  
   counter test_counter(
     .currentCount({uo_out,_notused}),
     .clk(clk),
