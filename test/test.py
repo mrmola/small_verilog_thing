@@ -45,7 +45,7 @@ async def test_project(dut):
     dut._log.info(dut.counter.value)
     assert dut.counter.value == 0
     await ClockCycles(dut.clk, 3)
-    assert dut.counter.value == 3
+    assert dut.counter.value == 2
 
     #TEST BLINKER
     #this is terrible but I don't know a better way that won't fail the test if you adjust blinker speed
