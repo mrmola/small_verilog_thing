@@ -10,6 +10,7 @@ module counter (
     input  wire       clk,      // clock
     input  wire       rst_n     // reset_n - low to reset
 );
+
   always @(posedge clk)
     currentCount[0] <= rst_n & ~currentCount[0];
   always @(posedge currentCount[0])
@@ -30,7 +31,5 @@ module counter (
     currentCount[6] <= ~currentCount[6];
   always @(posedge currentCount[6])
     currentCount[7] <= ~currentCount[7];
-  always @(negedge rst_n)
-    currentCount <= 8'b00000000;
-
+  
 endmodule
