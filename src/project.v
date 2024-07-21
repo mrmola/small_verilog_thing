@@ -15,15 +15,22 @@ module tt_um_mrmola (
     input  wire       clk,      // clock
     input  wire       rst_n     // reset_n - low to reset
 );
-  wire _notused[7:0];
-  
-  counter test_counter(
-    .currentCount({uo_out,_notused}),
+  wire count[15:0];
+
+  counter clock_counter(
+    .currentCount(count),
     .clk(clk),
     .rst_n(rst_n)
   );
+  
+  blinker blink(
+    .currentCount(count),
+    .clk(clk),
+    .blink_wire(uo_out[0])
+  );
+
   // All output pins must be assigned. If not used, assign to 0.
-  assign uio_out = 0;
+  assign uio_out[7:1] = 0;
   assign uio_oe  = 0;
 
   // List all unused inputs to prevent warnings

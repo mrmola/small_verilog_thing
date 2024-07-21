@@ -49,6 +49,16 @@ async def test_project(dut):
 
     #TEST BLINKER
     #this is terrible but I don't know a better way that won't fail the test if you adjust blinker speed
+    ones = 0
+    zeros = 0
+    for i in range(0, 10000):
+        await ClockCycles(dut.clk, 1)
+        if(dut.blink_wire.value == 0):
+            zeros += 1
+        else
+            ones += 1
+
+    assert (abs(zeros-ones) < 1000)
 
     # The following assersion is just an example of how to check the output values.
     # Change it to match the actual expected output of your module:
