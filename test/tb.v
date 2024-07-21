@@ -48,8 +48,9 @@ module tb ();
       .clk(clk),
       .rst_n(rst_n)
   );
+
   blinker blinker_test (
-      .currentCount(counter)
+      .currentCount(counter),
       .clk(clk),
       .blink_wire(blink_wire)
   );
