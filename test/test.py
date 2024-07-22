@@ -51,13 +51,13 @@ async def test_project(dut):
     dut.rst_n.value = 0
     await ClockCycles(dut.clk, 4)
     dut.rst_n.value = 1
-    dut.blink_offset.value = 10
+    dut.blink_offset.value = 100
     #TEST BLINKER
     #this is terrible but I don't know a better way that won't fail the test if you adjust blinker speed
     ones = 0
     zeros = 0
     difference = 0
-    for i in range(0, 10000):
+    for i in range(0, 100000):
         await ClockCycles(dut.clk, 1)
         if(dut.blink_wire2.value != dut.blink_wire.value):
             difference += 1
