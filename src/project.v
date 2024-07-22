@@ -18,7 +18,7 @@ module tt_um_mrmola (
   wire [15:0] count;
   reg [2:0] currentState;
   always @(negedge rst_n):
-    currentState <= 3'b101
+    currentState <= 3'b101;
   
   counter clock_counter(
     .currentCount({count}),
