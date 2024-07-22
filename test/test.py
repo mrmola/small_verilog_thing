@@ -75,6 +75,7 @@ async def test_project(dut):
         
     print(zeros, "aND ", ones);
     print(difference);
+    print(difs);
     print(output);
     #assert (abs(zeros-ones) < 100)
     #assert(difference/2 == 100)
