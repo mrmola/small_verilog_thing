@@ -42,9 +42,7 @@ module tt_um_mrmola (
   );
 
   //STATE HANDLING
-
-  //check_password button (THE GOAT)
-  always @(posedge uio_in[0] or posedge ui_in[0] or negedge rst_n)
+  always @(posedge clk)
     if(rst_n == 0) begin
       currentState <= `IDLE;
     end else if(uio_in[0] == 1) begin
@@ -69,6 +67,7 @@ module tt_um_mrmola (
         currentState <= `IDLE;
       end
     end
+  //check_password button (THE GOAT)
   
   //Handle all display logic
   /*always @(negedge clk)
