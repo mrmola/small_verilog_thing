@@ -51,7 +51,7 @@ async def test_project(dut):
     dut.rst_n.value = 0
     await ClockCycles(dut.clk, 4)
     dut.rst_n.value = 1
-    dut.blink_offset = 100
+    dut.blink_offset.value = 100
     #TEST BLINKER
     #this is terrible but I don't know a better way that won't fail the test if you adjust blinker speed
     ones = 0
