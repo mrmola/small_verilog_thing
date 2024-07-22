@@ -25,7 +25,7 @@ module tt_um_mrmola (
   reg [7:0] output_main;
   reg [7:0] output_secondary;
   assign uio_out = output_secondary;
-  assign ui_out  = output_main;
+  assign uo_out  = output_main;
 
   always @(negedge rst_n)
     currentState <= `IDLE;
