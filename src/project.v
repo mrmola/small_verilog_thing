@@ -45,7 +45,7 @@ module tt_um_mrmola (
 
   //check_password button (THE GOAT)
   always @(posedge uio_in[0] or posedge ui_in[0] or negedge rst_n)
-    if(rst_n == 1) begin
+    if(rst_n == 0) begin
       currentState <= `IDLE;
     end else if(uio_in[0] == 1) begin
       if (currentState == `OPENED) begin
