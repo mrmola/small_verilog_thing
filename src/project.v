@@ -42,12 +42,6 @@ module tt_um_mrmola (
     .offset({16'd0})
   );
 
-  blinker blink2(
-    .currentCount(count + 100),
-    .blink_wire(uo_out[0]),
-    .offset({16'd0})
-  );
-
   //STATE HANDLING
 
   //set_password button
@@ -73,8 +67,8 @@ module tt_um_mrmola (
     end
   
   //Handle all display logic
-  always @(negedge clk)
-    case currentState
+  /*always @(negedge clk)
+    case (currentState)
       `IDLE: begin
         
       end
@@ -93,7 +87,7 @@ module tt_um_mrmola (
       `INPUT_PASSWORD: begin
         
       end
-    endcase
+    endcase*/
 
   // All output pins must be assigned. If not used, assign to 0.
   assign uo_out[7:1] = 0;
