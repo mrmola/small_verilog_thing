@@ -13,6 +13,6 @@ module blinker (
     
     reg[15:0] currentCountShifted;
     assign currentCountShifted = currentCount;
-    assign blink_wire = (currentCount & mask) == mask;
+    assign blink_wire = (currentCount & mask) == mask ? 1 : 0;
 
 endmodule
