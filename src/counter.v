@@ -11,7 +11,8 @@ module counter (
     input  wire       rst_n     // reset_n - low to reset
 );
 
-  always @(posedge clk)
+  always @(posedge clk or negedge rst_n)
     currentCount <= rst_n ? currentCount + 1 : 0;
+  
   
 endmodule
