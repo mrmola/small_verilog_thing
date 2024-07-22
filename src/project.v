@@ -22,6 +22,7 @@ module tt_um_mrmola (
   wire [15:0] count;
   reg [2:0] currentState;
   reg [6:0] password;
+  
   always @(negedge rst_n)
     currentState <= `IDLE;
   
