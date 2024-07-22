@@ -55,13 +55,13 @@ module tb ();
   blinker blinker_test (
       .currentCount(counter),
       .blink_wire(blink_wire),
-      .mask(16'b0000000100000000)
+      .mask(16'b0000000010000000)
   );
   
   blinker blinker_test_offset (
       .currentCount(counter+blink_offset),
       .blink_wire(blink_wire2),
-      .mask(16'b0000000100000000)
+      .mask(16'b0000000010000000)
   );
 
 endmodule
