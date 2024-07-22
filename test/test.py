@@ -65,8 +65,8 @@ async def test_project(dut):
             zeros += 1
         else:
             ones += 1
-    assert(difference/2 == 100)
     assert (abs(zeros-ones) < 1000)
+    assert(difference/2 == 100)
 
     # The following assersion is just an example of how to check the output values.
     # Change it to match the actual expected output of your module:
