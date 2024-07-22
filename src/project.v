@@ -28,7 +28,6 @@ module tt_um_mrmola (
   //assign uio_out = output_secondary;
   //assign uo_out  = output_main;
 
-  always @()
   
   counter clock_counter(
     .currentCount({count}),
