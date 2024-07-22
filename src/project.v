@@ -22,6 +22,10 @@ module tt_um_mrmola (
   wire [15:0] count;
   reg [2:0] currentState;
   reg [6:0] password;
+  reg [7:0] output_main;
+  reg [7:0] output_secondary;
+  assign uio_out = output_secondary;
+  assign ui_out  = output_main;
 
   always @(negedge rst_n)
     currentState <= `IDLE;
@@ -53,19 +57,24 @@ module tt_um_mrmola (
     if (currentState == `IDLE) begin
       currentState <= `INPUT_PASSWORD;
     end else if (currentState == `INPUT_PASSWORD) begin
-      //CHECK PASSWORD HERE
+      if ( ui_in[7:1] == password ) begin
+        currentState <= `OPENED;
+      end else begin
+        currentState <= `ALARM;
+      end;
     end else if (currentState == `OPENED || currentState == `ALARM || currentState == `SET_AWAITING) begin
       currentState <= `IDLE;
     end
   
-
   assign uo_out[0] = currentState == `OPENED ? 1 : 0;
 
+  //Handle all display logic
 
   // All output pins must be assigned. If not used, assign to 0.
   assign uo_out[7:1] = 0;
   assign uio_oe  = 8'b01111111;
-  assign uio_out[0] = 8'b11111111;
+  assign uio_out[2:0] = currentState;
+  assign uio_out[7:3] = 5'b00000;
   // List all unused inputs to prevent warnings
   wire _unused = &{ena, ui_in[7:1], uio_in[7:1], 1'b0};
 
