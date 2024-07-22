@@ -17,6 +17,8 @@ module tt_um_mrmola (
 );
   wire [15:0] count;
   reg [2:0] currentState;
+  always @(negedge rst_n):
+    currentState <= 3'b101
   
   counter clock_counter(
     .currentCount({count}),
@@ -39,7 +41,7 @@ module tt_um_mrmola (
   // All output pins must be assigned. If not used, assign to 0.
   assign uo_out[7:1] = 0;
   assign uio_oe  = 8'b11111111;
-
+  assign uio_out = 8'b11111111;
   // List all unused inputs to prevent warnings
   wire _unused = &{ena, ui_in[7:0], uio_in[7:0], 1'b0};
 
