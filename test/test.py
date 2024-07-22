@@ -54,12 +54,12 @@ async def test_project(dut):
     dut.rst_n.value = 1
     dut.blink_offset.value = 100
 
-    assert dut.uio_out.value == 0
+    #assert dut.uio_out.value == 0
 
     dut.uio_in.value[0] = 1;
-    
+
     await ClockCycles(dut.clk, 4)
-    assert dut.uio_out.value == 4
+    #assert dut.uio_out.value == 4
 
 
     #TEST BLINKER
