@@ -45,18 +45,8 @@ module tt_um_mrmola (
 
   //STATE HANDLING
 
-  //set_password button
-  always @(negedge ui_in[0])
-    if (currentState == `OPENED) begin
-      currentState <= `SET_AWAITING;
-    end else if (currentState == `INPUT_PASSWORD) begin
-      currentState <= `IDLE;
-    end else if (currentState == `SET_AWAITING) begin
-      currentState <= `IDLE;
-      password = ui_in[6:0];
-    end
   //check_password button (THE GOAT)
-  always @(negedge uio_in[0])
+  always @(negedge uio_in[0] or negedge ui_in[0])
     if (currentState == `IDLE) begin
       currentState <= `INPUT_PASSWORD;
     end else if (currentState == `INPUT_PASSWORD) begin
