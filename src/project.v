@@ -22,7 +22,7 @@ module tt_um_mrmola (
   wire [15:0] count;
   reg [2:0] currentState;
   reg [6:0] password;
-  
+
   always @(negedge rst_n)
     currentState <= `IDLE;
   
@@ -41,7 +41,7 @@ module tt_um_mrmola (
   //STATE HANDLING
 
   //set_password button
-  always @(negedge ui_in[0]):
+  always @(negedge ui_in[0])
     if (currentState == `OPENED) begin
       currentState <= `SET_AWAITING;
     end else if (currentState == `INPUT_PASSWORD) begin
@@ -49,7 +49,7 @@ module tt_um_mrmola (
       currentState <= `IDLE;
     end
 
-  always @(negedge uio_in[0]):
+  always @(negedge uio_in[0])
     if (currentState == `IDLE) begin
       currentState <= `INPUT_PASSWORD;
     end else if (currentState == `INPUT_PASSWORD) begin
