@@ -28,8 +28,7 @@ module tt_um_mrmola (
   //assign uio_out = output_secondary;
   //assign uo_out  = output_main;
 
-  always @(negedge rst_n)
-    currentState <= `IDLE;
+  always @()
   
   counter clock_counter(
     .currentCount({count}),
@@ -46,17 +45,30 @@ module tt_um_mrmola (
   //STATE HANDLING
 
   //check_password button (THE GOAT)
-  always @(negedge uio_in[0] or negedge ui_in[0])
-    if (currentState == `IDLE) begin
-      currentState <= `INPUT_PASSWORD;
-    end else if (currentState == `INPUT_PASSWORD) begin
-      if ( ui_in[7:1] == password ) begin
-        currentState <= `OPENED;
-      end else begin
-        currentState <= `ALARM;
-      end;
-    end else if (currentState == `OPENED || currentState == `ALARM || currentState == `SET_AWAITING) begin
+  always @(posedge uio_in[0] or posedge ui_in[0] or negedge rst_n)
+    if(rst_n == 1) begin
       currentState <= `IDLE;
+    end else if(uio_in[0] == 1) begin
+      if (currentState == `OPENED) begin
+        currentState <= `SET_AWAITING;
+      end else if (currentState == `INPUT_PASSWORD) begin
+        currentState <= `IDLE;
+      end else if (currentState == `SET_AWAITING) begin
+        currentState <= `IDLE;
+        password <= ui_in[6:0];
+      end
+    end else if(ui_in[0] == 1) begin
+      if (currentState == `IDLE) begin
+        currentState <= `INPUT_PASSWORD;
+      end else if (currentState == `INPUT_PASSWORD) begin
+        if ( ui_in[7:1] == password ) begin
+          currentState <= `OPENED;
+        end else begin
+          currentState <= `ALARM;
+        end;
+      end else if (currentState == `OPENED || currentState == `ALARM || currentState == `SET_AWAITING) begin
+        currentState <= `IDLE;
+      end
     end
   
   //Handle all display logic
