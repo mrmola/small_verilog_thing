@@ -61,7 +61,7 @@ module tb ();
   blinker blinker_test_offset (
       .currentCount(counter),
       .blink_wire(blink_wire2),
-      .offset(blink_offset)
+      .offset(blink_offset+16'd0)
   );
 
 endmodule
