@@ -7,9 +7,11 @@
 
 module blinker (
     output wire       blink_wire,   // Dedicated outputs
-    input  wire[15:0]  currentCount
+    input  wire[15:0]  currentCount,
+    input  wire[15:0] offset
 );
-    assign blink_wire = currentCount[8] & currentCount[8];
+    wire[15:0] currentCountShifted = currentCount + offset;
+    assign blink_wire = currentCount[9] & currentCount[9];
 
     wire _unused = &{currentCount[15:9],currentCount[7:0],1'b0};
   
