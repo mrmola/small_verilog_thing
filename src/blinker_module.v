@@ -8,7 +8,7 @@
 module blinker (
     output wire       blink_wire,   // Dedicated outputs
     input  wire[15:0]  currentCount,
-    input  wire[15:0] mask
+    input  wire[15:0] mask          //MAKE THIS A POWER OF TWO OR YOU WILL BE VERY SAD 
 );
     
     reg[15:0] currentCountShifted;
