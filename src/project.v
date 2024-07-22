@@ -24,6 +24,7 @@ module tt_um_mrmola (
   reg [6:0] password;
   reg [7:0] output_main;
   reg [7:0] output_secondary;
+  wire blink_wire;
   assign uio_out = output_secondary;
   assign uo_out  = output_main;
 
@@ -38,7 +39,7 @@ module tt_um_mrmola (
   
   blinker blink(
     .currentCount({count}),
-    .blink_wire(uo_out[0]),
+    .blink_wire(blink_wire),
     .mask(16'b0000000100000000)
   );
 
@@ -90,8 +91,9 @@ module tt_um_mrmola (
     endcase*/
 
   // All output pins must be assigned. If not used, assign to 0.
-  assign uo_out[7:1] = 0;
+  assign uo_out[7:2] = 0;
   assign uo_out[0] = currentState == `OPENED ? 1 : 0;
+  assign uo_out[1] = currentState == `ALARM  ? blink_wire : 0;
   assign uio_oe  = 8'b01111111;
   assign uio_out[2:0] = currentState;
   assign uio_out[7:3] = 5'b00000;
