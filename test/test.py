@@ -51,7 +51,7 @@ async def test_project(dut):
     #this is terrible but I don't know a better way that won't fail the test if you adjust blinker speed
     ones = 0
     zeros = 0
-    for i in range(0, 10000):
+    for i in range(0, 100000):
         await ClockCycles(dut.clk, 1)
         if(dut.blink_wire.value == 0):
             zeros += 1

@@ -10,10 +10,8 @@ module blinker (
     input  wire[15:0]  currentCount,
     input  wire[15:0] offset
 );
+    
     wire[15:0] currentCountShifted = currentCount + offset;
     assign blink_wire = currentCountShifted[9] & currentCountShifted[9];
-
-    wire _unused = &{currentCount[15:9],currentCount[7:0],1'b0};
-  
 
 endmodule
