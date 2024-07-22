@@ -34,7 +34,7 @@ pinout:
   ui[7]: "H"
 
   # Outputs
-  uo[0]: "ALERT"
+  uo[0]: "OPEN"
   uo[1]: "B"
   uo[2]: "C"
   uo[3]: "D"
@@ -43,8 +43,8 @@ pinout:
   uo[6]: "G"
   uo[7]: "H"
 
-  # Bidirectional pins ALL OUTPUTS 
-  uio[0]: "OPENED"
+  # Bidirectional pins ALL OUTPUTS EXCEPT 0
+  uio[0]: "TEST PASSWORD"
   uio[1]: "OP1"
   uio[2]: "OP2"
   uio[3]: "OP3"

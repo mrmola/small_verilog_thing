@@ -58,7 +58,7 @@ async def test_project(dut):
     zeros = 0
     difference = 0
     output = ""
-    for i in range(0, 1000):
+    for i in range(0, 10000):
         await ClockCycles(dut.clk, 1)
         if(dut.blink_wire2.value != dut.blink_wire.value):
             difference += 1
@@ -75,6 +75,7 @@ async def test_project(dut):
     print(output);
     #assert (abs(zeros-ones) < 100)
     #assert(difference/2 == 100)
+    #THIS IS NOT WORKING ASK ABOUT IT IN OFFICE HOURS
 
     # The following assersion is just an example of how to check the output values.
     # Change it to match the actual expected output of your module:
