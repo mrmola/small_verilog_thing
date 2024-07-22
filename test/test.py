@@ -65,6 +65,7 @@ async def test_project(dut):
             zeros += 1
         else:
             ones += 1
+    print(zeros, "aND ", ones);
     assert (abs(zeros-ones) < 1000)
     assert(difference/2 == 100)
 
