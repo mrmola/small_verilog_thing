@@ -23,6 +23,8 @@ module tb ();
   wire [7:0] uio_out;
   wire [7:0] uio_oe;
   wire [15:0] counter;
+
+  wire [15:0] blink_offset;
   wire blink_wire;
   wire blink_wire2;
 
@@ -53,13 +55,13 @@ module tb ();
   blinker blinker_test (
       .currentCount(counter),
       .blink_wire(blink_wire),
-      .offset(16'd100)
+      .offset(16'd0)
   );
   
-  blinker blinker_test_2 (
+  blinker blinker_test_offset (
       .currentCount(counter),
       .blink_wire(blink_wire2),
-      .offset(16'd0)
+      .offset(blink_offset)
   );
 
 endmodule

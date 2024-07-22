@@ -47,17 +47,25 @@ async def test_project(dut):
     await ClockCycles(dut.clk, 3)
     assert dut.counter.value == 2
 
+    
+    dut.rst_n.value = 0
+    await ClockCycles(dut.clk, 4)
+    dut.rst_n.value = 1
+    dut.blink_offset = 100
     #TEST BLINKER
     #this is terrible but I don't know a better way that won't fail the test if you adjust blinker speed
     ones = 0
     zeros = 0
+    difference = 0
     for i in range(0, 10000):
-        await ClockCycles(dut.clk, 10)
+        await ClockCycles(dut.clk, 1)
+        if(dut.blink_wire2.value != dut.blink_wire.value):
+            difference += 1
         if(dut.blink_wire.value == 0):
             zeros += 1
         else:
             ones += 1
-
+    assert(difference/2 == 100)
     assert (abs(zeros-ones) < 1000)
 
     # The following assersion is just an example of how to check the output values.
