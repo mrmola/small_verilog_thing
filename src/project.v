@@ -22,11 +22,11 @@ module tt_um_mrmola (
   wire [15:0] count;
   reg [2:0] currentState;
   reg [6:0] password;
-  reg [7:0] output_main;
-  reg [7:0] output_secondary;
+  //reg [7:0] output_main;
+  //reg [7:0] output_secondary;
   wire blink_wire;
-  assign uio_out = output_secondary;
-  assign uo_out  = output_main;
+  //assign uio_out = output_secondary;
+  //assign uo_out  = output_main;
 
   always @(negedge rst_n)
     currentState <= `IDLE;
@@ -53,7 +53,7 @@ module tt_um_mrmola (
       currentState <= `IDLE;
     end else if (currentState == `SET_AWAITING) begin
       currentState <= `IDLE;
-      password <= ui_in[6:0];
+      password = ui_in[6:0];
     end
   //check_password button (THE GOAT)
   always @(negedge uio_in[0])
