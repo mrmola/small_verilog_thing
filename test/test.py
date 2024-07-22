@@ -58,6 +58,7 @@ async def test_project(dut):
     zeros = 0
     difference = 0
     output = ""
+    dif    = ""
     for i in range(0, 10000):
         await ClockCycles(dut.clk, 1)
         if(dut.blink_wire2.value != dut.blink_wire.value):
@@ -67,8 +68,10 @@ async def test_project(dut):
             output += "0"
         if(dut.blink_wire2.value == 0):
             zeros += 1
+            dif += "0"
         else:
             ones += 1
+            dif +=  "1"
         
     print(zeros, "aND ", ones);
     print(difference);

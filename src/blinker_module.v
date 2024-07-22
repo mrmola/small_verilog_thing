@@ -12,7 +12,7 @@ module blinker (
 );
     
     wire[15:0] currentCountShifted;
-    assign currentCountShifted = currentCount + offset;
+    assign currentCountShifted = currentCount;
     assign blink_wire = currentCountShifted[9] & currentCountShifted[9];
 
 endmodule

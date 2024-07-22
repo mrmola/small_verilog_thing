@@ -39,7 +39,13 @@ module tt_um_mrmola (
   blinker blink(
     .currentCount({count}),
     .blink_wire(uo_out[0]),
-    .offset({16'd100})
+    .offset({16'd0})
+  );
+
+  blinker blink2(
+    .currentCount(count + 100),
+    .blink_wire(uo_out[0]),
+    .offset({16'd0})
   );
 
   //STATE HANDLING
@@ -52,7 +58,7 @@ module tt_um_mrmola (
       password <= ui_in[6:0];
       currentState <= `IDLE;
     end
-
+  //check_password button (THE GOAT)
   always @(negedge uio_in[0])
     if (currentState == `IDLE) begin
       currentState <= `INPUT_PASSWORD;
@@ -66,12 +72,32 @@ module tt_um_mrmola (
       currentState <= `IDLE;
     end
   
-  assign uo_out[0] = currentState == `OPENED ? 1 : 0;
-
   //Handle all display logic
+  always @(negedge clk)
+    case currentState
+      `IDLE: begin
+        
+      end
+      `INPUT_PASSWORD: begin
+
+      end
+      `SET_AWAITING: begin
+
+      end
+      `OPENED: begin
+
+      end 
+      `ALARM: begin
+
+      end
+      `INPUT_PASSWORD: begin
+        
+      end
+    endcase
 
   // All output pins must be assigned. If not used, assign to 0.
   assign uo_out[7:1] = 0;
+  assign uo_out[0] = currentState == `OPENED ? 1 : 0;
   assign uio_oe  = 8'b01111111;
   assign uio_out[2:0] = currentState;
   assign uio_out[7:3] = 5'b00000;
