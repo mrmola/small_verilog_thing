@@ -24,6 +24,7 @@ module tb ();
   wire [7:0] uio_oe;
   wire [15:0] counter;
   wire blink_wire;
+  wire blink_wire2;
 
   // Replace tt_um_example with your module name:
   tt_um_mrmola user_project (
@@ -51,7 +52,14 @@ module tb ();
 
   blinker blinker_test (
       .currentCount(counter),
-      .blink_wire(blink_wire)
+      .blink_wire(blink_wire),
+      .offset(16'd100)
+  );
+  
+  blinker blinker_test_2 (
+      .currentCount(counter),
+      .blink_wire(blink_wire2),
+      .offset(16'd0)
   );
 
 endmodule
