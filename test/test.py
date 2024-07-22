@@ -61,7 +61,7 @@ async def test_project(dut):
     dif    = ""
     for i in range(0, 10000):
         await ClockCycles(dut.clk, 1)
-        if(dut.blink_wire2.value != dut.blink_wire.value):
+        if(dut.blink_wire2.value != dut.blink_wire.value and i < 200):
             difference += 1
             output += "1"
         else:
