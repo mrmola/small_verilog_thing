@@ -8,11 +8,11 @@
 module blinker (
     output wire       blink_wire,   // Dedicated outputs
     input  wire[15:0]  currentCount,
-    input  wire[15:0] offset
+    input  wire[15:0] mask
 );
     
-    wire[15:0] currentCountShifted;
+    reg[15:0] currentCountShifted;
     assign currentCountShifted = currentCount;
-    assign blink_wire = currentCountShifted[9] & currentCountShifted[9];
+    assign blink_wire = (currentCount & mask) == 1;
 
 endmodule

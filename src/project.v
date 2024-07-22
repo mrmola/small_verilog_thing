@@ -39,7 +39,7 @@ module tt_um_mrmola (
   blinker blink(
     .currentCount({count}),
     .blink_wire(uo_out[0]),
-    .offset({16'd0})
+    .mask(16'd100)
   );
 
   //STATE HANDLING
